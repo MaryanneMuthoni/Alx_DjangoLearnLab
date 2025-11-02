@@ -2,10 +2,10 @@
 
 ```python
 # Retrieve the book instance first
-book1 = Book.objects.get(title="Nineteen Eighty-Four")
+book = Book.objects.get(title="Nineteen Eighty-Four")
 
 # Delete the book
-book1.delete()
+book.delete()
 
 Book.objects.all()
 # Expected Output:

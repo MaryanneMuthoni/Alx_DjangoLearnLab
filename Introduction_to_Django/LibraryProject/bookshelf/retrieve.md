@@ -2,14 +2,14 @@
 
 ```python
 # Retrieve the book instance first (assuming it's the only book)
-book1 = Book.objects.get(title="1984")
+book = Book.objects.get(title="1984")
 
 # Display the attributes
-book1.title
+book.title
 # Expected output: '1984'
 
-book1.author
+book.author
 # Expected output: 'George Orwell'
 
-book1.publication_year
+book.publication_year
 # Expected output: '1949'
