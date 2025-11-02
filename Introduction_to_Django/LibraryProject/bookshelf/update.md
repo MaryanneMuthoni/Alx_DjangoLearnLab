@@ -2,16 +2,16 @@
 
 ```python
 # Retrieve the book instance first
-book1 = Book.objects.get(title="1984")
+book = Book.objects.get(title="1984")
 
 # change the title attribute
-book1.title = "Nineteen Eighty-Four"
+book.title = "Nineteen Eighty-Four"
 
 # save changes
-book1.save()
+book.save()
 
 # check change
-book1.title
+book.title
 
 # Expected output:
 # 'Nineteen Eighty-Four'
