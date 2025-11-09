@@ -9,12 +9,12 @@ def book_list(request):
     view should render a simple text list of book titles and their authors'''
     books = Book.objects.select_related('author').all()
     context = {'books': books}
-    return render(request, 'books/list_books.html', context)
+    return render(request, 'relationship_app/list_books.html', context)
 
 class LibraryDetailView(DetailView):
     '''displays details for a specific library, listing all books available in that library'''
     model = Library
-    template_name = 'libraries/library_detail.html'
+    template_name = 'relationship_app/library_detail.html'
     context_object_name = 'library'
 
     def get_context_data(self, **kwargs):
