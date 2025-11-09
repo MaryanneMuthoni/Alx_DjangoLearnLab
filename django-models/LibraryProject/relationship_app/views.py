@@ -7,7 +7,7 @@ from .models import Author, Book, Library, Librarian
 def book_list(request):
     '''Lists all books stored in the database
     view should render a simple text list of book titles and their authors'''
-    books = Book.objects.select_related('author').all()
+    books = Book.objects.all()
     context = {'books': books}
     return render(request, 'relationship_app/list_books.html', context)
 
