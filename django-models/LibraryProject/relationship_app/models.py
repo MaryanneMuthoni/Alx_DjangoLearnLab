@@ -20,6 +20,13 @@ class Book(models.Model):
         '''This makes Book objects display as their title'''
         return self.title
 
+    class Meta:
+        permissions = [
+            ("can_add_book", "Can add book"),
+            ("can_change_book", "Can change book"),
+            ("can_delete_book", "Can delete book"),
+        ]
+
 class Library(models.Model):
     name = models.CharField(max_length=100)
     books = models.ManyToManyField(Book)
