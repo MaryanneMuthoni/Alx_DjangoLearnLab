@@ -88,6 +88,9 @@ SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
+# Tell Django that requests are secure when the proxy sets X-Forwarded-Proto to 'https'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 SESSION_COOKIE_SECURE = True  # Ensures session cookies are sent only over HTTPS
 CSRF_COOKIE_SECURE = True     # Ensures CSRF cookies are sent only over HTTPS
 
