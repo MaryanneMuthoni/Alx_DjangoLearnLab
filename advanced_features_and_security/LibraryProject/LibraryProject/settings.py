@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bookshelf.apps.BookshelfConfig',
     'relationship_app.apps.RelationshipAppConfig',
     'csp',
+    'django_extensions',
 ]
 
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
@@ -77,6 +78,23 @@ CONTENT_SECURITY_POLICY = {
         'connect-src': ("'self'",),
     }
 }
+
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True
+
+# HTTP Strict Transport Security (HSTS)
+# Tells browsers to always use HTTPS for this domain
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+SESSION_COOKIE_SECURE = True  # Ensures session cookies are sent only over HTTPS
+CSRF_COOKIE_SECURE = True     # Ensures CSRF cookies are sent only over HTTPS
+
+X_FRAME_OPTIONS = 'DENY'                 # Prevent clickjacking
+SECURE_CONTENT_TYPE_NOSNIFF = True       # Prevent MIME type sniffing
+SECURE_BROWSER_XSS_FILTER = True         # Enable browser XSS protection
+
 
 ROOT_URLCONF = 'LibraryProject.urls'
 
