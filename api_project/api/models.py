@@ -21,3 +21,8 @@ class Student(models.Model):
 
     class Meta:
         ordering = ['grade', 'first_name']
+
+class Book(models.Model):
+    '''Class representing book instance'''
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
