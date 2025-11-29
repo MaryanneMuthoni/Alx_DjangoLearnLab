@@ -3,7 +3,7 @@ from .models import Book, Author
 from datetime import datetime
 from django.utils import timezone
 
-class BookSerializer(serilizers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
     '''BookSerializer with custom validation for publication_year'''
     class Meta:
         model = Book
@@ -17,7 +17,7 @@ class BookSerializer(serilizers.ModelSerializer):
             raise serializers.ValidationError("Publication year must not be in future.")
         return data
 
-class AuthorSerializer(serilizers.ModelSerializer):
+class AuthorSerializer(serializers.ModelSerializer):
     '''AuthorSerializer with a books field that is a nested BookSerializer'''
     books = BookSerializer(many=True, read_only=True)
 
