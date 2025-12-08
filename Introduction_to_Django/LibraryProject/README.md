@@ -1,35 +1,36 @@
-Introduction to Django
+# Introduction to Django
 This project is about Django, one of the most popular web frameworks for building robust web applications. It involves: setting up a Django development environment, learning about Django models and ORM, and exploring the Django admin interface.
 
-Objectives
+**Objectives**
 
-Set Up Django Development Environment.
-Implementing and Interacting with Django Models.
-Utilizing the Django Admin Interface.
-Task 0- Introduction to Django Development Environment Setup
-Objective:
+- Set Up Django Development Environment.
+- Implementing and Interacting with Django Models.
+- Utilizing the Django Admin Interface.
+
+### Task 0- Introduction to Django Development Environment Setup
+
+<ins>Objective:</ins>
 
 Gain familiarity with Django by setting up a Django development environment and creating a basic Django project. This task aims to introduce you to the workflow of Django projects, including project creation and running the development server.
 
-Task Description:
+<ins>Task Description:</ins>
 
 Install Django and create a new Django project named LibraryProject. This initial setup will serve as the foundation for developing Django applications. You’ll also explore the project’s default structure to understand the roles of various components.
 
-Steps:
+<ins>Steps:</ins>
 
-Install Django:
-Ensure Python is installed on your system.
-Install Django using pip: pip install django.
-Create Your Django Project: Create a new Django project by running: django-admin startproject LibraryProject.
+1. Install Django:
+2. Ensure Python is installed on your system.
+3. Install Django using pip: ```pip install django```.
+4. Create Your Django Project: Create a new Django project by running: ```django-admin startproject LibraryProject```.
+5. Run the Development Server: Navigate into your project directory (cd LibraryProject). Create a README.md file inside the LibraryProject. Start the development server using: ```python manage.py runserver```. Open a web browser and go to http://127.0.0.1:8000/ to view the default Django welcome page.
+6. Explore the Project Structure: Familiarize yourself with the created project structure. Pay particular attention to: settings.py: Configuration for the Django project. urls.py: The URL declarations for the project; a “table of contents” of your Django-powered site. manage.py: A command-line utility that lets you interact with this Django project
 
-Run the Development Server: Navigate into your project directory (cd LibraryProject). Create a README.md file inside the LibraryProject. Start the development server using: python manage.py runserver. Open a web browser and go to http://127.0.0.1:8000/ to view the default Django welcome page. Explore the Project Structure:
+<ins>Repo:</ins>
 
-Familiarize yourself with the created project structure. Pay particular attention to: settings.py: Configuration for the Django project. urls.py: The URL declarations for the project; a “table of contents” of your Django-powered site. manage.py: A command-line utility that lets you interact with this Django project
+- GitHub repository: Alx_DjangoLearnLab
+- Directory: Introduction_to_Django
 
-Repo:
-
-GitHub repository: Alx_DjangoLearnLab
-Directory: Introduction_to_Django
 Task1- Implementing and Interacting with Django Models
 Objective:
 
