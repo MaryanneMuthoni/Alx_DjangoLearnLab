@@ -26,7 +26,7 @@ Install Django and create a new Django project named LibraryProject. This initia
 5. Run the Development Server: Navigate into your project directory (cd LibraryProject). Create a README.md file inside the LibraryProject. Start the development server using: ```python manage.py runserver```. Open a web browser and go to http://127.0.0.1:8000/ to view the default Django welcome page.
 6. Explore the Project Structure: Familiarize yourself with the created project structure. Pay particular attention to: settings.py: Configuration for the Django project. urls.py: The URL declarations for the project; a “table of contents” of your Django-powered site. manage.py: A command-line utility that lets you interact with this Django project
 
-<ins>Repo:</ins>
+**Repo:**
 
 - GitHub repository: Alx_DjangoLearnLab
 - Directory: Introduction_to_Django
@@ -89,30 +89,32 @@ Ensure the model is correctly set up for migrations.
 
 - Database Operations: Perform and document each CRUD operation in the Django shell. Save your commands and their outputs in a file named CRUD_operations.md.
 
-Repo:
+**Repo:**
 
 - GitHub repository: Alx_DjangoLearnLab
 - Directory: Introduction_to_Django
 
-Task 2- Utilizing the Django Admin Interface
-Objective:
+### [Task 2](https://github.com/MaryanneMuthoni/Alx_DjangoLearnLab/blob/main/Introduction_to_Django/LibraryProject/bookshelf/admin.py): Utilizing the Django Admin Interface
+
+<ins>Objective:</ins>
 
 Gain practical experience with the Django admin interface by configuring the admin to manage the Book model. This task will demonstrate how to use Django’s built-in admin interface to perform data management tasks efficiently.
 
-Task Description:
+<ins>Task Description:</ins>
 
 Enhance your bookshelf app by integrating the Book model with the Django admin interface. Customize the admin display to improve the management and visibility of book data, and document the process to ensure consistent setup and configuration.
 
-Steps:
+<ins>Steps:</ins>
 
-Register the Book Model with the Django Admin:
+1. Register the Book Model with the Django Admin:
+2. Modify bookshelf/admin.py to include the Book model, enabling admin functionalities for it.
 
-Modify bookshelf/admin.py to include the Book model, enabling admin functionalities for it.
-Customize the Admin Interface:
+<ins>Customize the Admin Interface:</ins>
 
-Implement custom configurations to display title, author, and publication_year in the admin list view.
-Configure list filters and search capabilities to enhance the admin’s usability for Book entries.
-Repo:
+- Implement custom configurations to display title, author, and publication_year in the admin list view.
+- Configure list filters and search capabilities to enhance the admin’s usability for Book entries.
 
-GitHub repository: Alx_DjangoLearnLab
-Directory: Introduction_to_Django
+**Repo:**
+
+- GitHub repository: Alx_DjangoLearnLab
+- Directory: Introduction_to_Django
