@@ -7,7 +7,7 @@ This project is about Django, one of the most popular web frameworks for buildin
 - Implementing and Interacting with Django Models.
 - Utilizing the Django Admin Interface.
 
-### Task 0- Introduction to Django Development Environment Setup
+### [Task 0](https://github.com/MaryanneMuthoni/Alx_DjangoLearnLab/tree/main/Introduction_to_Django/LibraryProject): Introduction to Django Development Environment Setup
 
 <ins>Objective:</ins>
 
@@ -31,7 +31,7 @@ Install Django and create a new Django project named LibraryProject. This initia
 - GitHub repository: Alx_DjangoLearnLab
 - Directory: Introduction_to_Django
 
-### Task1- Implementing and Interacting with Django Models
+### [Task1](https://github.com/MaryanneMuthoni/Alx_DjangoLearnLab/tree/main/Introduction_to_Django/LibraryProject/bookshelf): Implementing and Interacting with Django Models
 
 <ins>Objective:</ins>
 
