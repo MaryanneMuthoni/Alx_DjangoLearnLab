@@ -5,7 +5,7 @@ from .models import Author, Book, Library, Librarian
 book.author.name
 
 # List all books in a library.
-library.books.title
+books.library.all()
 
 # Retrieve the librarian for a library
 librarian.library.name
