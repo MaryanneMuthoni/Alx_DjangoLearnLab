@@ -3,13 +3,16 @@ from .models import Author, Book, Library, Librarian
 # Contain the query for each of the following of relationships:
 
 # Query all books by a specific author
-book.author.name
+Book.objects.all()
+author.all()
 
 # List all books in a library.
-books.library.all()
+Library.objects.get(name=library_name)
+books.all()
 
 # Retrieve the librarian for a library
-librarian.library.name
+Librarian.objects.get(name=librarian_name)
+library.all()
 
 if __name__ == "__main__":
     # code to run when the script is executed directly
