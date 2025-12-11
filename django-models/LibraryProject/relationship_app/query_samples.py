@@ -11,8 +11,7 @@ Library.objects.get(name=library_name)
 books.all()
 
 # Retrieve the librarian for a library
-Library.objects.get(name=library_name)
-objects.filter(library=library)
+Librarian.objects.get(library=library_name)
 
 if __name__ == "__main__":
     # code to run when the script is executed directly
