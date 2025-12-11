@@ -1,35 +1,53 @@
-# Introduction to Django
-This project is about Django, one of the most popular web frameworks for building robust web applications. It involves: setting up a Django development environment, learning about Django models and ORM, and exploring the Django admin interface.
+# Deep Dive into Django Models and Views
+
+This project is designed to solidify their understanding of Django’s ORM capabilities, view configurations, and user authentication features. Through a series of hands-on tasks, you will implement complex model relationships, develop both function-based and class-based views, and manage user authentication and permissions. 
 
 **Objectives**
 
-- Set Up Django Development Environment.
-- Implementing and Interacting with Django Models.
-- Utilizing the Django Admin Interface.
+- Implement Advanced Model Relationships in Django.
+- Develop Django Views and URL Configuration.
+- Manage User Authentication in Django.
+- Implement Role-Based Access Control in Django.
+- Implement Custom Permissions in Django.
 
-### [Task 0](https://github.com/MaryanneMuthoni/Alx_DjangoLearnLab/tree/main/Introduction_to_Django/LibraryProject): Introduction to Django Development Environment Setup
+### [Task 0](): Implementing Advanced Model Relationships in Django
 
 <ins>Objective:</ins>
 
-Gain familiarity with Django by setting up a Django development environment and creating a basic Django project. This task aims to introduce you to the workflow of Django projects, including project creation and running the development server.
+Master Django’s ORM capabilities by creating a set of models that demonstrate the use of ForeignKey, ManyToMany, and OneToOne relationships.
 
 <ins>Task Description:</ins>
 
-Install Django and create a new Django project named LibraryProject. This initial setup will serve as the foundation for developing Django applications. You’ll also explore the project’s default structure to understand the roles of various components.
+Duplicate the previous project directory Introduction_ to_ Django, rename it to django-models and add a new app named relationship_app where you’ll define models that showcase complex relationships between entities using ForeignKey, ManyToMany, and OneToOne fields.
 
 <ins>Steps:</ins>
 
-1. Install Django:
-2. Ensure Python is installed on your system.
-3. Install Django using pip: ```pip install django```.
-4. Create Your Django Project: Create a new Django project by running: ```django-admin startproject LibraryProject```.
-5. Run the Development Server: Navigate into your project directory (cd LibraryProject). Create a README.md file inside the LibraryProject. Start the development server using: ```python manage.py runserver```. Open a web browser and go to http://127.0.0.1:8000/ to view the default Django welcome page.
-6. Explore the Project Structure: Familiarize yourself with the created project structure. Pay particular attention to: settings.py: Configuration for the Django project. urls.py: The URL declarations for the project; a “table of contents” of your Django-powered site. manage.py: A command-line utility that lets you interact with this Django project
+1. Create the relationship_app App: Within your Django project directory, generate a new app: ```python3 manage.py startapp relationship_app```.
+2. Define Complex Models in relationship_app/models.py:
+
+- Author Model:
+1. name: CharField.
+- Book Model:
+1. title: CharField.
+2. author: ForeignKey to Author.
+- Library Model:
+1. name: CharField.
+2. books: ManyToManyField to Book.
+- Librarian Model:
+1. name: CharField.
+2. library: OneToOneField to Library.
+
+3. Apply Database Migrations: Run migrations to create your model tables: ```python3 manage.py makemigrations relationship_app``` followed by ```python3 manage.py migrate```.
+4. Implement Sample Queries: Prepare a Python script query_samples.py in the relationship_app directory. This script should contain the query for each of the following of relationship:
+- Query all books by a specific author.
+- List all books in a library.
+- Retrieve the librarian for a library.
 
 **Repo:**
 
 - GitHub repository: Alx_DjangoLearnLab
-- Directory: Introduction_to_Django
+- Directory: django-models
+- File: models.py, query_samples.py
 
 ### [Task1](https://github.com/MaryanneMuthoni/Alx_DjangoLearnLab/tree/main/Introduction_to_Django/LibraryProject/bookshelf): Implementing and Interacting with Django Models
 
