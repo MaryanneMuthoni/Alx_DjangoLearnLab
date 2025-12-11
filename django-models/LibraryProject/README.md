@@ -10,7 +10,7 @@ This project is designed to solidify their understanding of Django’s ORM capab
 - Implement Role-Based Access Control in Django.
 - Implement Custom Permissions in Django.
 
-### [Task 0](): Implementing Advanced Model Relationships in Django
+### [Task 0](https://github.com/MaryanneMuthoni/Alx_DjangoLearnLab/tree/main/django-models/LibraryProject/relationship_app): Implementing Advanced Model Relationships in Django
 
 <ins>Objective:</ins>
 
