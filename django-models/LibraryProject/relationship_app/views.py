@@ -3,7 +3,7 @@ from .models import Author
 from .models import Book
 from .models import Library
 from .models import Librarian
-from django.views.generic import ListView, DetailView
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 def list_view(request):
