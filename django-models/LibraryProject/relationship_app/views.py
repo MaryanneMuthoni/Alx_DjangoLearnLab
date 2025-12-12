@@ -6,7 +6,7 @@ from .models import Librarian
 from django.views.generic.detail import DetailView
 
 # Create your views here.
-def list_view(request):
+def list_books(request):
     '''Lists all books stored in the database'''
     books = Book.objects.all()
     context= {'book_list': books}
