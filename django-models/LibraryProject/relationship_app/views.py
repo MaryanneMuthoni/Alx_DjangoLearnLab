@@ -3,14 +3,15 @@ from .models import Author
 from .models import Book
 from .models import Library
 from .models import Librarian
-from django.views.generic.detail import DetailView
+from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth import login
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import permission_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 def list_books(request):
@@ -61,3 +62,23 @@ def librarian_view(request):
 def member_view(request):
     '''Renders view for user who is member'''
     return render(request, 'relationship_app/member_view.html')
+
+@method_decorator(permission_required('relationship_app.can_add_book', login_url='login'), name='dispatch')
+class BookCreateView(CreateView):
+    model = Book
+    fields = ['title', 'author']
+    template_name = 'relationship_app/book_form.html'
+    success_url = '/books/'
+
+@method_decorator(permission_required('relationship_app.can_change_book', login_url='login'), name='dispatch')
+class BookUpdateView(UpdateView):
+    model = Book
+    fields = ['title', 'author']
+    template_name = 'relationship_app/book_form.html'
+    success_url = '/books/'
+
+@method_decorator(permission_required('relationship_app.can_delete_book', login_url='login'), name='dispatch')
+class BookDeleteView(DeleteView):
+    model = Book
+    template_name = 'relationship_app/book_confirm_delete.html'
+    success_url = '/books/'
