@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from .forms import CustomUserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from .models import Post
+from django.utils import timezone
+from .forms import PostForm
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -30,3 +33,51 @@ def profile_view(request):
         form = UserUpdateForm(instance=request.user)
 
     return render(request, 'blog/profile.html', {'form': form})
+
+class BlogListView(ListView):
+    '''display all blog posts'''
+    model = Post
+    template_name = 'blog/post_list.html'
+    context_object_name = 'post_list'
+
+class BlogDetailView(DetailView):
+    '''show individual blog posts'''
+    model = Post
+    template_name = 'blog/post_detail.html'
+    context_object_name = 'post'
+
+class BlogCreateView(LoginRequiredMixin, CreateView):
+    '''allow authenticated users to create new posts'''
+    model = Post
+    form_class = PostForm
+    template_name = 'blog/post_create.html'
+    success_url = reverse_lazy('list')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.published_date = timezone.now()
+        return super().form_valid(form)
+
+class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+    '''enable post authors to edit their posts'''
+    model = Post
+    form_class = PostForm
+    template_name = 'blog/post_update.html'
+    success_url = reverse_lazy('list')
+    context_object_name = 'post'
+
+    def test_func(self):
+        '''A test that the current logged-in user must pass to access the view- must be author'''
+        post = self.get_object()
+        return self.request.user == post.author
+
+class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    '''let authors delete their posts'''
+    model = Post
+    template_name = 'blog/post_delete.html'
+    success_url = reverse_lazy('list')
+
+    def test_func(self):
+        '''A test that the current logged-in user must pass to access the view- must be author'''
+        post = self.get_object()
+        return self.request.user == post.author
