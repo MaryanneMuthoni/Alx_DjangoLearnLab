@@ -2,6 +2,9 @@ from django.shortcuts import render
 from rest_framework import viewsets, permissions, filters
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from .serializers import PostSerializer
 
 # Create your views here.
 
@@ -37,3 +40,14 @@ class CommentViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+class FeedView(ListAPIView):
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        following_users = user.following.all()
+
+        return Post.objects.filter(
+            author__in=following_users
+        ).order_by('-created_at')
