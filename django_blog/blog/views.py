@@ -1,12 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
-from .forms import CustomUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post, Comment
 from django.utils import timezone
-from .forms import PostForm
+from .forms import CustomUserCreationForm, PostForm, CommentForm
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -81,3 +80,54 @@ class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         '''A test that the current logged-in user must pass to access the view- must be author'''
         post = self.get_object()
         return self.request.user == post.author
+
+
+# Comment views
+class CommentListView(ListView):
+    '''display all comments under a blog posts'''
+    model = Comment
+    template_name = 'blog/comment_list.html'
+    context_object_name = 'comment_list'
+
+class CommentDetailView(DetailView):
+    '''show individual comments on blog posts'''
+    model = Comment
+    template_name = 'blog/comment_detail.html'
+    context_object_name = 'comment'
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    '''allow authenticated users to add new comments'''
+    model = Comment
+    form_class = CommentForm
+    template_name = 'comment/comment_create.html'
+    success_url = reverse_lazy('posts/comments')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.created_at = timezone.now()
+        form.instance.updated_at = timezone.now()
+        return super().form_valid(form)
+
+class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+    '''enable users to edit their comments'''
+    model = Comment
+    form_class = CommentForm
+    template_name = 'blog/comment_update.html'
+    success_url = reverse_lazy('posts/comments')
+    context_object_name = 'comment'
+
+    def test_func(self):
+        '''A test that the current logged-in user must pass to access the view- must be author'''
+        post = self.get_object()
+        return self.request.user == comment.author
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    '''let user delete their comment'''
+    model = Comment
+    template_name = 'blog/comment_delete.html'
+    success_url = reverse_lazy('posts/comments')
+
+    def test_func(self):
+        '''A test that the current logged-in user must pass to access the view- must be author'''
+        post = self.get_object()
+        return self.request.user == comment.author

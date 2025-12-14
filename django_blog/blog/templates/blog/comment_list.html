@@ -1,0 +1,19 @@
+{% load static %}
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Blog post comments</h1>
+    
+    <ul>
+	{% for comment in comment_list %}
+	<li>{{comment.post.title}}: {{comment.content}} posted on {{comment.published_date}} by {{comment.author.username}} and updated on {{comment.updated_at}}</li>
+	{% endfor %}
+    </ul>
+</body>
+</html>

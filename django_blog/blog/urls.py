@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import SignUpView, profile_view, profile, BlogListView, BlogDetailView, BlogCreateView, BlogUpdateView, BlogDeleteView
+from .views import SignUpView, profile_view, profile, BlogListView, BlogDetailView, BlogCreateView, BlogUpdateView, BlogDeleteView, CommentListView, CommentDetailView, CommentCreateView, CommentUpdateView, CommentDeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
@@ -14,4 +14,9 @@ urlpatterns = [
     path('post/new/', BlogCreateView.as_view(), name='blog_create'),
     path('post/<int:pk>/update/', BlogUpdateView.as_view(), name='blog_update'),
     path('post/<int:pk>/delete/', BlogDeleteView.as_view(), name='blog_delete'),
+    path('posts/comments', CommentListView.as_view(), name='comment_list'),
+    path('post/<int:pk>/comments', CommentDetailView.as_view(), name='comment_detail'),
+    path('post/<int:pk>/comments/new/', CommentCreateView.as_view(), name='comment_create'),
+    path('post/<int:pk>/comments/update/', CommentUpdateView.as_view(), name='comment_update'),
+    path('post/<int:pk>/comments/delete/', CommentDeleteView.as_view(), name='comment_delete'),
 ]

@@ -1,0 +1,19 @@
+{% load static %}
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create comment</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Create comment</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add comment</button>
+	<a href="{% url 'posts/comments' %}">Cancel</a>
+    </form>
+</body>
+</html>
